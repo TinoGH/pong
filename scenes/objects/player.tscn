@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://lv6rwbrsk3jw"]
+
+[ext_resource type="Texture2D" uid="uid://hilksmmm0v5v" path="res://assets/player.png" id="1_11fu7"]
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_11fu7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -17)
+scale = Vector2(1, 2.0625)
+polygon = PackedVector2Array(-15, -16, -9, -16, -4, -14.5455, 1, -12.6061, 5, -9.69697, 8, -6.78788, 12, -2.42424, 15, 2.90909, 15, 13.0909, 12, 18.4242, 7, 23.7576, 1, 27.6364, -5, 30.5455, -10, 32.4848, -15, 32.4848)
