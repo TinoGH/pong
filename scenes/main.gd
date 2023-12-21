@@ -1,12 +1,13 @@
 extends Node
 
-@export var player_speed = 1000
-@export var ball_speed = 500
+
 @export var ball_scene:PackedScene
+@export var player_speed = 1000
 var player_left
 var player_right
 var goal_left
 var goal_right
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,7 +33,7 @@ func _process(delta):
 	
 
 func new_game():
-	new_point("left")
+	new_point(Constants.SIDE.LEFT)
 	
 
 func end_game():
@@ -40,28 +41,19 @@ func end_game():
 	
 
 func new_point(side):
-	player_left.position = Vector2(16, 360)
-	player_right.position = Vector2(1264, 360)
-	
-	var pos = Vector2.ZERO
-	var direction = Vector2.ZERO
-	if side == "left":
-		pos = Vector2(50, 360)
-		direction = Vector2(1, 0)
-	elif side == "right":
-		pos = Vector2(1230, 360)
-		direction = Vector2(-1, 0)
+	player_left.reset()
+	player_right.reset()
 	
 	var ball = ball_scene.instantiate()
-	ball.position = pos
-	ball.linear_velocity = direction * ball_speed
+	ball.set_start(side)
 	
+	# wait for input
 	call_deferred("add_child", ball)
 
 
 func _on_goal_left_goal():
-	new_point("left")
+	new_point(Constants.SIDE.LEFT)
 
 
 func _on_goal_right_goal():
-	new_point("right")
+	new_point(Constants.SIDE.RIGHT)
