@@ -1,21 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://bi0gavyfy67g3"]
 
 [ext_resource type="PackedScene" uid="uid://crkxcvfn8t14c" path="res://scenes/objects/wall.tscn" id="1_hilah"]
-[ext_resource type="Script" path="res://scenes/objects/main.gd" id="1_oxoks"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_oxoks"]
 [ext_resource type="PackedScene" uid="uid://1pxf2damnq6h" path="res://scenes/objects/ball.tscn" id="2_x2245"]
 [ext_resource type="PackedScene" uid="uid://lv6rwbrsk3jw" path="res://scenes/objects/player.tscn" id="3_jc6id"]
-[ext_resource type="PackedScene" uid="uid://5r4g8ij6f20b" path="res://goal.tscn" id="5_0hebk"]
+[ext_resource type="PackedScene" uid="uid://5r4g8ij6f20b" path="res://scenes/objects/goal.tscn" id="5_0hebk"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_oxoks")
+ball_scene = ExtResource("2_x2245")
 
 [node name="WallTop" parent="." instance=ExtResource("1_hilah")]
 
 [node name="WallDown" parent="." instance=ExtResource("1_hilah")]
-position = Vector2(0, 710)
-
-[node name="Ball" parent="." instance=ExtResource("2_x2245")]
-position = Vector2(48, 360)
+position = Vector2(1280, 720)
+rotation = 3.14159
 
 [node name="PlayerLeft" parent="." instance=ExtResource("3_jc6id")]
 position = Vector2(16, 360)
@@ -25,10 +24,12 @@ position = Vector2(1264, 360)
 rotation = 3.14159
 
 [node name="GoalLeft" parent="." instance=ExtResource("5_0hebk")]
-position = Vector2(-16, 0)
+position = Vector2(-24, 0)
 
 [node name="GoalRight" parent="." instance=ExtResource("5_0hebk")]
-position = Vector2(1288, 0)
+position = Vector2(1352, 0)
 
 [connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
+[connection signal="goal" from="GoalLeft" to="." method="_on_goal_left_goal"]
 [connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
+[connection signal="goal" from="GoalRight" to="." method="_on_goal_right_goal"]

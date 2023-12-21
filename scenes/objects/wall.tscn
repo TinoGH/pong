@@ -4,9 +4,10 @@
 friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxou4"]
-size = Vector2(1280, 10)
+size = Vector2(1280, 70)
 
 [node name="Wall" type="RigidBody2D"]
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_ulnkd")
 gravity_scale = 0.0
 freeze = true
@@ -17,5 +18,5 @@ offset_right = 1280.0
 offset_bottom = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(640, 5)
+position = Vector2(640, -25)
 shape = SubResource("RectangleShape2D_wxou4")
