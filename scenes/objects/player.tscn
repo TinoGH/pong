@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://lv6rwbrsk3jw"]
+[gd_scene load_steps=5 format=3 uid="uid://lv6rwbrsk3jw"]
 
 [ext_resource type="Texture2D" uid="uid://hilksmmm0v5v" path="res://assets/player.png" id="1_11fu7"]
 [ext_resource type="Script" path="res://scenes/objects/player.gd" id="1_12i65"]
+[ext_resource type="PackedScene" uid="uid://do455dxexsosk" path="res://scenes/objects/ball_sprite.tscn" id="3_sufrt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qec6j"]
 radius = 66.0076
@@ -19,3 +20,7 @@ texture = ExtResource("1_11fu7")
 position = Vector2(-50, 0)
 shape = SubResource("CircleShape2D_qec6j")
 debug_color = Color(0.835294, 0.34902, 0.45098, 0.419608)
+
+[node name="BallSprite" parent="." instance=ExtResource("3_sufrt")]
+visible = false
+position = Vector2(40, 0)

@@ -52,7 +52,7 @@ start={
 
 3d/default_linear_damp=0.0
 3d/default_angular_damp=0.0
-2d/default_linear_damp=0.0
+2d/default_linear_damp=0.1
 2d/default_angular_damp=0.0
 
 [rendering]
