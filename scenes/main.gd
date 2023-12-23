@@ -8,6 +8,7 @@ var player_left
 var player_right
 var score_left = 0
 var score_right = 0
+var ball
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,6 +16,7 @@ func _ready():
 	hud = $Scores
 	player_left = $PlayerLeft
 	player_right = $PlayerRight
+	ball = ball_scene.instantiate()
 	new_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,40 +38,44 @@ func _input(event):
 
 
 func new_game():
-	new_point(Constants.SIDE.LEFT)
+	player_right.toggle_start_ball_sprite(false)
+	new_point(player_left)
 	
 
 func end_game():
 	pass
 	
 
-func new_point(side):
+func new_point(player):
+	ball.queue_free()
+	
 	player_left.reset()
 	player_right.reset()
 	hud.update_scores(score_left, score_right)
 	
-	var start_player
-	match side:
-		Constants.SIDE.LEFT:
-			start_player = player_left
-		Constants.SIDE.RIGHT:
-			start_player = player_right
-			
-	start_player.toggle_start_ball_sprite(true)
+	player.toggle_start_ball_sprite(true)
 	
-	var ball = ball_scene.instantiate()
+	ball = ball_scene.instantiate()
+	ball.bounced_too_much.connect(on_ball_bounced_too_much)
 	
 	await pressedStart
-	ball.set_start(side, start_player.get_start_ball_pos())
-	start_player.toggle_start_ball_sprite(false)
+	ball.set_start(player)
+	player.toggle_start_ball_sprite(false)
 	add_child(ball)
+	
+
+func on_ball_bounced_too_much(player):
+	if player.is_left:
+		_on_goal_left_goal()
+	else:
+		_on_goal_right_goal()
 
 
 func _on_goal_left_goal():
 	score_right += 1
-	new_point(Constants.SIDE.LEFT)
+	new_point(player_left)
 
 
 func _on_goal_right_goal():
 	score_left += 1
-	new_point(Constants.SIDE.RIGHT)
+	new_point(player_right)

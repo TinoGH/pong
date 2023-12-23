@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://lv6rwbrsk3jw"]
 
-[ext_resource type="Texture2D" uid="uid://hilksmmm0v5v" path="res://assets/player.png" id="1_11fu7"]
 [ext_resource type="Script" path="res://scenes/objects/player.gd" id="1_12i65"]
+[ext_resource type="Texture2D" uid="uid://dqxtjtjkour31" path="res://assets/player_v2.png" id="2_hk64e"]
 [ext_resource type="PackedScene" uid="uid://do455dxexsosk" path="res://scenes/objects/ball_sprite.tscn" id="3_sufrt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qec6j"]
-radius = 66.0076
+radius = 113.018
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
@@ -14,13 +14,14 @@ script = ExtResource("1_12i65")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_11fu7")
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_hk64e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-50, 0)
+position = Vector2(-93, 0)
 shape = SubResource("CircleShape2D_qec6j")
 debug_color = Color(0.835294, 0.34902, 0.45098, 0.419608)
 
 [node name="BallSprite" parent="." instance=ExtResource("3_sufrt")]
-visible = false
 position = Vector2(40, 0)

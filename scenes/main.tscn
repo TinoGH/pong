@@ -23,16 +23,16 @@ position = Vector2(16, 360)
 [node name="PlayerRight" parent="." instance=ExtResource("3_jc6id")]
 position = Vector2(1264, 360)
 rotation = 3.14159
+is_left = false
 
 [node name="GoalLeft" parent="." instance=ExtResource("5_0hebk")]
-position = Vector2(-24, 0)
+position = Vector2(-48, 0)
 
 [node name="GoalRight" parent="." instance=ExtResource("5_0hebk")]
-position = Vector2(1352, 0)
+position = Vector2(1328, 720)
+rotation = 3.14159
 
 [node name="Scores" parent="." instance=ExtResource("6_hd1pd")]
 
-[connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
 [connection signal="goal" from="GoalLeft" to="." method="_on_goal_left_goal"]
-[connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
 [connection signal="goal" from="GoalRight" to="." method="_on_goal_right_goal"]

@@ -6,11 +6,9 @@ friction = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxou4"]
 size = Vector2(1280, 74)
 
-[node name="Wall" type="RigidBody2D"]
+[node name="Wall" type="StaticBody2D"]
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_ulnkd")
-gravity_scale = 0.0
-freeze = true
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]

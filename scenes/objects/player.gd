@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var is_left = true
 @export var speed = 1000
 var initial_pos
 
